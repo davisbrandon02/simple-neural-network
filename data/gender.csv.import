@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://g4er855yuq4u"
+
+[deps]
+
+files=["res://data/gender.Age.translation", "res://data/gender.Height.translation", "res://data/gender.Weight.translation", "res://data/gender.Occupation.translation", "res://data/gender.Education Level.translation", "res://data/gender.Marital Status.translation", "res://data/gender.Income.translation", "res://data/gender.Favorite Color.translation", "res://data/gender..translation"]
+
+source_file="res://data/gender.csv"
+dest_files=["res://data/gender.Age.translation", "res://data/gender.Height.translation", "res://data/gender.Weight.translation", "res://data/gender.Occupation.translation", "res://data/gender.Education Level.translation", "res://data/gender.Marital Status.translation", "res://data/gender.Income.translation", "res://data/gender.Favorite Color.translation", "res://data/gender..translation"]
+
+[params]
+
+compress=true
+delimiter=0

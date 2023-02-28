@@ -1,7 +1,7 @@
 class_name Layer
 extends Node
 
-var neurons: Array[Neuron] = []
+@export var neurons: Array[Neuron] = []
 
 func feedForward(_inputs):
 	var outputs: Array = []
@@ -9,5 +9,5 @@ func feedForward(_inputs):
 		outputs.append(neurons[n].feedForward(_inputs))
 	return outputs
 
-func _init(_neurons: Array[Neuron]):
+func _init(_neurons: Array[Neuron] = [Neuron.new()]):
 	neurons = _neurons

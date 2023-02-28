@@ -3,9 +3,12 @@ extends Node
 
 var weights: Array = []
 var bias: float = 0
-var output: int = 0
 
 func feedForward(inputs):
+	if weights.size() < inputs.size():
+		for i in (inputs.size() - weights.size()):
+			weights.append(1)
+	
 	var weightedInputs: Array
 	for i in inputs.size():
 		var weightedInput = inputs[i] * weights[i]
@@ -19,6 +22,12 @@ func feedForward(inputs):
 	
 	return Utils.sigmoid(weightedSumWithBias)
 
-func _init(_weights: Array, _bias: float):
+func _init(_weights: Array = [1,1], _bias: float = 0):
 	weights = _weights
 	bias = _bias
+
+func mutate(rate: float = 0.01):
+	randomize()
+	for i in weights.size():
+		weights[i] += randf_range(-rate, rate)
+	bias += randf_range(-rate, rate)

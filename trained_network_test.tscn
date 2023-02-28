@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfrkix0qfuq10"]
+
+[ext_resource type="Script" path="res://trained_network_test.gd" id="1_p1sa2"]
+
+[node name="TrainedNetworkTest" type="Node"]
+script = ExtResource("1_p1sa2")
+
+[node name="OutputLabel" type="Label" parent="."]
+offset_left = 496.0
+offset_top = 217.0
+offset_right = 583.0
+offset_bottom = 243.0
+text = "Output:"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 165.0
+offset_right = 130.0
+offset_bottom = 191.0
+text = "Weight (kg)"
+
+[node name="WeightSlider" type="VSlider" parent="Label"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 35.0
+offset_right = 41.0
+offset_bottom = 191.0
+value = 50.0
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 201.0
+offset_right = 60.0
+offset_bottom = 227.0
+text = "50"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 233.0
+offset_top = 165.0
+offset_right = 288.0
+offset_bottom = 191.0
+text = "Height (cm)"
+
+[node name="HeightSlider" type="VSlider" parent="Label2"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 35.0
+offset_right = 57.0
+offset_bottom = 191.0
+max_value = 200.0
+value = 100.0
+
+[node name="Label2" type="Label" parent="Label2"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 203.0
+offset_right = 73.0
+offset_bottom = 229.0
+text = "100"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 367.0
+offset_top = 215.0
+offset_right = 440.0
+offset_bottom = 246.0
+text = "Run test"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 367.0
+offset_top = 256.0
+offset_right = 440.0
+offset_bottom = 287.0
+text = "Return"
+
+[connection signal="value_changed" from="Label/WeightSlider" to="." method="_on_weight_slider_value_changed"]
+[connection signal="value_changed" from="Label2/HeightSlider" to="." method="_on_height_slider_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

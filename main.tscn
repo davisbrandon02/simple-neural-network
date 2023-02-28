@@ -1,6 +1,97 @@
-[gd_scene load_steps=2 format=3 uid="uid://heo0qwpjjyes"]
+[gd_scene load_steps=2 format=3 uid="uid://crq7y0ijkiy26"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_h2erq"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 script = ExtResource("1_h2erq")
+
+[node name="OutputLabel" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 90.0
+offset_right = 196.0
+offset_bottom = 116.0
+text = "Output:"
+
+[node name="LossLabel" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 114.0
+offset_right = 196.0
+offset_bottom = 140.0
+text = "Loss:"
+
+[node name="BatchLabel" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 141.0
+offset_right = 196.0
+offset_bottom = 167.0
+text = "Batch size: 50"
+
+[node name="HSlider" type="HSlider" parent="BatchLabel"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 5.0
+offset_right = 291.0
+offset_bottom = 21.0
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+
+[node name="MutationLabel" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 171.0
+offset_right = 196.0
+offset_bottom = 197.0
+text = "Mutations: "
+
+[node name="MutationSlider" type="HSlider" parent="MutationLabel"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 5.0
+offset_right = 291.0
+offset_bottom = 21.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.1
+
+[node name="RunGeneration" type="Button" parent="."]
+offset_left = 74.0
+offset_top = 240.0
+offset_right = 202.0
+offset_bottom = 271.0
+text = "Run single generation"
+
+[node name="TestNetwork" type="Button" parent="."]
+offset_left = 74.0
+offset_top = 322.0
+offset_right = 283.0
+offset_bottom = 353.0
+text = "Test current best network"
+
+[node name="Auto" type="CheckBox" parent="."]
+offset_left = 73.0
+offset_top = 203.0
+offset_right = 151.0
+offset_bottom = 234.0
+text = "Auto"
+
+[node name="SpeedSlider" type="HSlider" parent="Auto"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 8.0
+offset_right = 286.0
+offset_bottom = 24.0
+min_value = 0.5
+step = 0.1
+value = 1.5
+
+[node name="AutoSpeed" type="Timer" parent="."]
+autostart = true
+
+[connection signal="value_changed" from="BatchLabel/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MutationLabel/MutationSlider" to="." method="_on_mutation_slider_value_changed"]
+[connection signal="pressed" from="RunGeneration" to="." method="runGeneration"]
+[connection signal="pressed" from="TestNetwork" to="." method="_on_test_network_pressed"]
+[connection signal="toggled" from="Auto" to="." method="_on_auto_toggled"]
+[connection signal="value_changed" from="Auto/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
+[connection signal="timeout" from="AutoSpeed" to="." method="_on_auto_speed_timeout"]
